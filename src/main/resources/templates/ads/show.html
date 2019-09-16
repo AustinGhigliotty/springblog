@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Title</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+<th:block th:replace="fragments/navbar" />
+
+<div class="container row individual-blog-body">
+	<th:block th:if="${ad.image} != null">
+		<div class="col-4 indiv-img-holder">
+			<img th:src="${ad.image}" alt="Ad image" class="individual-img" />
+		</div>
+	</th:block>
+	<div class="col">
+		<br/>
+		<h3 th:text="${ad.title}" th:href="@{/ads/{id}(id=${ad.id})}"></h3>
+		<p th:text="${ad.description}"></p>
+		<small id="ad-id" th:text="${ad.id}"></small>
+	</div>
+</div>
+
+<!--<form th:action="@{/ads/create}" th:method="post" th:object="${ad}">-->
+<!--	Title:<input th:field="*{title}"/><br/>-->
+<!--	Description:<input th:field="*{description}"/><br/>-->
+<!--	Image (optional):<input th:field="*{image}"/><br/>-->
+<!--	<button class="btn btn-info">Create</button>-->
+<!--</form>-->
+
+
+	<div th:each="comment : ${comments}">
+		<p th:text="${comment.body}"></p>
+	</div>
+
+
+
+<label for="comment-box"></label>
+<textarea name="comment-box" id="comment-box" cols="90" rows="8" class="comment-box"></textarea>
+
+</body>
+</html>

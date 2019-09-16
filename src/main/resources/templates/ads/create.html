@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Create a blog - SpringBlog</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+</head>
+<body>
+<th:block th:replace="fragments/navbar" />
+
+<main class="container">
+	<form th:action="@{/ads/create}" th:method="post" th:object="${ad}">
+		Title:<input th:field="*{title}"/><br/>
+		Description:<input th:field="*{description}"/><br/>
+		Image (optional):<input th:field="*{image}"/><br/>
+		<button class="btn btn-info">Create</button>
+	</form>
+</main>
+
+</body>
+</html>

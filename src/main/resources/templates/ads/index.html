@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	<title>Index - SpringBlog</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+<th:block th:replace="fragments/navbar" />
+
+<div class="row blog-container">
+	<div th:each="ad : ${ads}" class=" col col-30 blog-div">
+		<div class="blog-img-div">
+			<th:block th:if="${ad.image} != null">
+				<img th:src="${ad.image}" alt="Ad image" class="blog-img" />
+			</th:block>
+		</div>
+		<h4><a th:text="${ad.title}" th:href="@{/ads/{id}(id=${ad.id})}"/></h4>
+		<p th:text="${ad.description}" />
+<!--		<a th:href="@{/ads/{id}(id=${ad.id})}" class="btn btn-primary">Show</a>-->
+		<a th:href="@{/ads/{id}/edit(id=${ad.id})}" class="btn btn-warning">Edit</a>
+	</div>
+</div>
+</body>
+</html>

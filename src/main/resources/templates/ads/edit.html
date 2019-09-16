@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Edit ad - SpringBlog</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+</head>
+<body>
+<th:block th:replace="fragments/navbar" />
+
+<main class="container">
+	<form th:action="@{'/ads/' + ${ad.id} + '/edit'}" th:method="post" th:object="${ad}">
+		Title:<input th:field="*{title}" th:value="${ad.title}"/><br/>
+		Description:<input th:field="*{description}" th:value="${ad.description}"/><br/>
+		Image (optional):<input th:field="*{image}" th:value="${ad.image}"/><br/>
+		<button class="btn btn-info">Confirm</button>
+	</form>
+</main>
+
+</body>
+</html>
